@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NgAppDemo", "NgAppDemo\NgAppDemo.csproj", "{3A06B843-E588-44BD-8E50-3A700DC8015A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{678E539D-480F-4228-9AD0-F9B9867D6D98}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A06B843-E588-44BD-8E50-3A700DC8015A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A06B843-E588-44BD-8E50-3A700DC8015A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A06B843-E588-44BD-8E50-3A700DC8015A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A06B843-E588-44BD-8E50-3A700DC8015A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6452876-AB36-40B5-A6AA-ADAAB213F42E}
+	EndGlobalSection
+EndGlobal
