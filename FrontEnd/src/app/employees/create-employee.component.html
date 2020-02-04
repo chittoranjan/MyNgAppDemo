@@ -71,7 +71,7 @@
                 <div class="from-group">
                     <label for="dateOfBirth">Date of Birth </label>
                     <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" type="text" bsDatepicker
-                        class="form-control">
+                      [bsConfig]="dsDatepickerConfig"  class="form-control">
                 </div>
             </div>
             <div class="panel-footer">
