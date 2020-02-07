@@ -8,6 +8,7 @@ import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
   styleUrls: ['./create-employee.component.scss']
 })
 export class CreateEmployeeComponent implements OnInit {
+  previwPhoto = false;
   dateOfBirth: Date = new Date(2020, 1, 20);
   dsDatepickerConfig: Partial<BsDatepickerConfig>;
   gender = 'male';
@@ -30,6 +31,10 @@ export class CreateEmployeeComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  togglePhotoPreview() {
+    this.previwPhoto = !this.previwPhoto;
   }
 
   saveEmployee(empForm: NgForm): void {

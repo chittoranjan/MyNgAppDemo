@@ -73,7 +73,24 @@
                     <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" type="text" bsDatepicker
                       [bsConfig]="dsDatepickerConfig"  class="form-control">
                 </div>
+
+                <div class="from-group">
+                    <label for="photoPath">Photo Path </label>
+                    <input id="photoPath" name="photoPath" [(ngModel)]="photoPath" type="text"
+                        class="form-control">
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="button" value="Show Image" (click)="togglePhotoPreview()" class="btn btn-primary">
+                        {{previwPhoto ? "Hide" : "Show"}} Photo
+                    </button>
+                </div>
+                <div class="form-group">
+                    <img src="photoPath" height="200" width="200" *ngIf="previwPhoto"/>
+                </div>
             </div>
+            
+
             <div class="panel-footer">
                 <button type="submit" class="btn btn-primary"> Save</button>
             </div>
