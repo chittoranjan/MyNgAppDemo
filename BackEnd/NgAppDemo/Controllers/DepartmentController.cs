@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NgAppDemo.Batabase;
@@ -12,11 +10,11 @@ namespace NgAppDemo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentsController : ControllerBase
+    public class DepartmentController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public DepartmentsController(AppDbContext context)
+        public DepartmentController(AppDbContext context)
         {
             _context = context;
         }

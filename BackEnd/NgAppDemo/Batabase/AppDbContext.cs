@@ -14,5 +14,9 @@ namespace NgAppDemo.Batabase
             
         }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<SaleDetails> SaleDetailses { get; set; }
     }
 }
