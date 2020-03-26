@@ -3,3 +3,4 @@ export class ProductType {
     name: string = '';
     description: string = '';
 }
+

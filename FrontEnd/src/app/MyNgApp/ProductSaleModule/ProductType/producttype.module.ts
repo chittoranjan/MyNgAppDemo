@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductTypeComponent } from './product-type/product-type.component';
-import { MaterialModule } from 'src/app/appCore/MaterialModule';
+import { ProducttypeComponent } from './producttype/producttype.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/appCore/material/material.module';
 
 
 
 @NgModule({
-  declarations: [ProductTypeComponent],
+  declarations: [ProducttypeComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule
   ]
 })

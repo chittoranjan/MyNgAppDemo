@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductTypeService {
+export class ProducttypeService {
 
   productTypeList: ProductType[] = [];
   onProductTypeListChanged: BehaviorSubject<ProductType[]>;
@@ -38,12 +38,12 @@ export class ProductTypeService {
     });
   }
   // tslint:disable-next-line:typedef
-  deleteHoliday(id: number) {
+  delete(id: number) {
     return this.http.delete(this.url + this.controller + '/' + id);
   }
 
   // tslint:disable-next-line:typedef
-  editHoliday(model: ProductType) {
+  edit(model: ProductType) {
     return this.http.put(this.url + this.controller + '/' + model.id, model);
 
   }
