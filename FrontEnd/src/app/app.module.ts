@@ -13,13 +13,16 @@ import { ProducttypeComponent } from './MyNgApp/ProductSaleModule/ProductType/pr
 import { ProducttypeModule } from './MyNgApp/ProductSaleModule/ProductType/producttype.module';
 import { ProductModule } from './MyNgApp/ProductSaleModule/product/product.module';
 import { ProductComponent } from './MyNgApp/ProductSaleModule/product/product/product.component';
+import { SaleComponent } from './MyNgApp/ProductSaleModule/sales/sale/sale.component';
+import { SaleModule } from './MyNgApp/ProductSaleModule/sales/sale.module';
 
 
 
 const appRoutes: Routes = [
   { path: 'ProductType', component: ProducttypeComponent },
-   { path: 'Product', component: ProductComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'Product', component: ProductComponent },
+  { path: 'Sale', component: SaleComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 
@@ -40,6 +43,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ProducttypeModule,
     ProductModule,
+    SaleModule,
 
   ],
   providers: [],

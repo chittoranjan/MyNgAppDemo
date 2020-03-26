@@ -13,8 +13,14 @@ export class CommonService {
     // tslint:disable-next-line: variable-name
     private _http: HttpClient
     ) { }
+
   // tslint:disable-next-line:typedef
   getPeoductType() {
     return this._http.get(this.urlAddress + 'ProductType');
   }
+
+  getPeoduct() {
+    return this._http.get(this.urlAddress + 'Product');
+  }
+
 }

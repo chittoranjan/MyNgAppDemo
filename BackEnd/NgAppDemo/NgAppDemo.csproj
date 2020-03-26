@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200326165550_SaleDetailsModelUpdated.cs" />
+    <Compile Remove="Migrations\20200326165550_SaleDetailsModelUpdated.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 

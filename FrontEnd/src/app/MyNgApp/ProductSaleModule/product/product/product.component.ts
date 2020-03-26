@@ -41,8 +41,6 @@ export class ProductComponent implements OnInit {
   }
 
   save(model: Product) {
-  
-    //w8
     this._service.save(model).subscribe(res => {
       this.productFormInstance();
     });
