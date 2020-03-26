@@ -1,0 +1,48 @@
+<div class="content">
+    <div class="card-container">
+        <div class="">
+            <div>
+                <h3>Product Entry</h3>
+            </div>
+            <div>
+                <form [formGroup]="productForm" (ngSubmit)="save(productForm.value)">
+
+                    <input type="hidden" formControlName="id">
+
+                    <div>
+                        <mat-form-field appearance="outline" class="">
+                            <mat-label>Product Type</mat-label>
+                            <mat-select formControlName="productTypeId">
+                                <mat-option *ngFor="let productType of productTypeList" [value]="productType.id">
+                                    {{ productType.name }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline" class="">
+                            <mat-label>Name</mat-label>
+                            <input autocomplete="off" matInput formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline" class="">
+                            <mat-label>Price</mat-label>
+                            <input autocomplete="off" type="number" matInput formControlName="price">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline" class="">
+                            <mat-label>Description</mat-label>
+                            <textarea autocomplete="off" matInput formControlName="description"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-button color="primary" type="submit"> Create </button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

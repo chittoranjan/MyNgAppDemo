@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProducttypeComponent } from './producttype/producttype.component';
+import { ProductComponent } from './product/product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/appCore/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -8,13 +8,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-  declarations: [ProducttypeComponent],
+  declarations: [ProductComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule,
+    FlexLayoutModule
   ]
 })
-export class ProducttypeModule { }
+export class ProductModule { }

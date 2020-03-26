@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,11 +11,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ProducttypeComponent } from './MyNgApp/ProductSaleModule/ProductType/producttype/producttype.component';
 import { ProducttypeModule } from './MyNgApp/ProductSaleModule/ProductType/producttype.module';
+import { ProductModule } from './MyNgApp/ProductSaleModule/product/product.module';
+import { ProductComponent } from './MyNgApp/ProductSaleModule/product/product/product.component';
+
 
 
 const appRoutes: Routes = [
-  {  path: 'ProductType', component: ProducttypeComponent },
-  // { path: 'create', component: ''},
+  { path: 'ProductType', component: ProducttypeComponent },
+   { path: 'Product', component: ProductComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
@@ -33,9 +36,10 @@ const appRoutes: Routes = [
     CommonModule,
     HttpClientModule,
     MaterialModule,
+    FlexLayoutModule,
     RouterModule.forRoot(appRoutes),
-    
     ProducttypeModule,
+    ProductModule,
 
   ],
   providers: [],
