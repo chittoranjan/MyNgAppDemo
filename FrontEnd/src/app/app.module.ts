@@ -31,7 +31,6 @@ const appRoutes: Routes = [
     AppComponent,
   ],
   imports: [
-
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -44,6 +43,7 @@ const appRoutes: Routes = [
     ProducttypeModule,
     ProductModule,
     SaleModule,
+
 
   ],
   providers: [],

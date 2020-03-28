@@ -1,18 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NgAppDemo.Batabase;
 
 namespace NgAppDemo
@@ -35,6 +26,9 @@ namespace NgAppDemo
             services.AddMvc();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,18 +54,22 @@ namespace NgAppDemo
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors(options =>
-                options.WithOrigins("http://localhost:4200")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
+                options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
+
+
             app.UseEndpoints(endpoints =>
             {
+               
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
 
             app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
              {
                  endpoints.MapControllers();

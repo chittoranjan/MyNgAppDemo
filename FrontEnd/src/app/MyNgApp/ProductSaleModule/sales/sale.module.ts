@@ -14,7 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
-    CommonModule
+    CommonModule,
   ]
 })
 export class SaleModule { }

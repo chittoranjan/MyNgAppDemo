@@ -57,6 +57,32 @@ namespace NgAppDemo.Controllers
             return product;
         }
 
+
+        [HttpGet("GetProductByTypeId/{id:int}")]
+        public async Task<ActionResult<List<Product>>> GetProductByTypeId(int id)
+        {
+            var dataList = await _context.Products.Include(pt=>pt.ProductType).Where(c=>c.ProductTypeId==id).ToListAsync();
+
+            if (dataList == null)
+            {
+                return NotFound();
+            }
+
+            var jsonData = dataList.Select(c => new
+            {
+                c.Id,
+                c.Name,
+                c.Description,
+                c.Price,
+                c.ProductTypeId,
+
+                ProductType = new { c.ProductType.Id, c.ProductType.Name, c.ProductType.Description }
+
+            });
+            return Ok(jsonData);
+        }
+
+
         // PUT: api/Product/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

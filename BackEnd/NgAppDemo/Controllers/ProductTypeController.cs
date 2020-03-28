@@ -30,36 +30,25 @@ namespace NgAppDemo.Controllers
 
             var productList = dataList.Select(c=>c.Products);
             var products=new List<Product>();
-            
-            foreach (var product in productList)
+            foreach (var i in productList)
             {
-                
-                foreach (var pro in product)
-                {
-                    
-                    var obj = new Product()
-                    {
-                        Id = pro.Id,
-                        Name = pro.Name,
-                        Description = pro.Description,
-                        Price = pro.Price,
-                        ProductTypeId = pro.ProductTypeId
-
-                    };
-                    products.Add(obj);
-                }
-                
-               
+                products.AddRange(i);
             }
+
            
             var jsonData = dataList.Select(c => new
             {
                 c.Id,
                 c.Name,
                 c.Description,
-                Products = c.Products =products,   
+                Products = c.Products  = new List<Product>()
+                {
+                    
+                }
+
             });
-            return Ok(jsonData);
+           return Ok(jsonData);
+         
         }
 
         // GET: api/ProductType/5
