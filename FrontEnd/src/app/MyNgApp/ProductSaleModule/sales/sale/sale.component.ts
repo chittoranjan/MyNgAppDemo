@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { SaleService } from '../sale.service';
 import { CommonService } from '../../commonservice/common.service';
 import { Sale } from '../sale.model';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ProductType } from '../../ProductType/product-type.model';
 import { Utility } from 'src/app/appCore/Utility/Utility';
 
@@ -23,15 +23,15 @@ export class SaleComponent implements OnInit {
 
   saleForm: FormGroup;
 
-  selected = 0;
-
 
   displayedColumns: string[] = ['Sl', 'Product', 'Price', 'Discount', 'Amount'];
   dataSource = ELEMENT_DATA;
+
   @ViewChild(MatTable, { static: true }) table: MatTable<PeriodicElement>;
 
 
   constructor(
+
     // tslint:disable-next-line: variable-name
     private _formBuilder: FormBuilder,
     // tslint:disable-next-line: variable-name
@@ -57,21 +57,28 @@ export class SaleComponent implements OnInit {
     this.saleForm = this._formBuilder.group(new Sale());
   }
 
-  onChange(event): void {
+  onChange(event) {
     const selectedPTId = event.value;
-    this._commonService.getPeoduct();
+
     this._commonService.getPeoductByTypeId(selectedPTId).subscribe(res => {
-      this.productList = res as Product[];
+      if (Utility.hasNoError(res)) {
+        this.productList = res as Product[];
+      }
+
     });
+
     console.log(this.productList);
+
     if (Utility.hasNoError(this.productList)) {
-      this.productList.forEach(element => {
+
+      this.productList.forEach(pro => {
         this.dataSource.push({
-          product: element.name,
-          price: element.price,
+          product: pro.name,
+          price: pro.price,
           discount: 0,
           amount: 0,
         });
+
         this.table.renderRows();
       });
     }

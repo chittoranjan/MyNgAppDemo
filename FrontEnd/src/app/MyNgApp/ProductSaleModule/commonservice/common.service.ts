@@ -22,8 +22,8 @@ export class CommonService {
   getPeoduct() {
     return this._http.get(this.urlAddress + 'Product');
   }
+
   getPeoductByTypeId(id: number) {
-    var p = this._http.get(this.urlAddress + 'Product/GetProductByTypeId/' +  id);
-    return p;
+   return this._http.get(this.urlAddress + 'Product/GetProductByTypeId/' +  id);
   }
 }

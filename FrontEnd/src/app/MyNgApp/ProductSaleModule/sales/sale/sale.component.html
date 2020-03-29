@@ -43,11 +43,10 @@
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            <!-- <span>{{selected.id}} {{selected.name}}</span> -->
                            
                         </div>
                         
-                        <div class="container text-center" >
+                        <div class="" >
                             <table mat-table [dataSource]="dataSource" #productTable class="">
 
                                 <!-- Position Column -->
@@ -71,7 +70,7 @@
                                 <!-- Symbol Column -->
                                 <ng-container matColumnDef="Discount">
                                     <th mat-header-cell *matHeaderCellDef> Discount </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.discount}} </td>
+                                    <td mat-cell *matCellDef="let element" > {{element.discount}} </td>
                                 </ng-container>
                                 <ng-container matColumnDef="Amount">
                                     <th mat-header-cell *matHeaderCellDef> Amount </th>
