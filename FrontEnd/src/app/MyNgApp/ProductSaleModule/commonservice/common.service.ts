@@ -12,7 +12,7 @@ export class CommonService {
   constructor(
     // tslint:disable-next-line: variable-name
     private _http: HttpClient
-    ) { }
+  ) { }
 
   // tslint:disable-next-line:typedef
   getPeoductType() {
@@ -24,6 +24,8 @@ export class CommonService {
   }
 
   getPeoductByTypeId(id: number) {
-   return this._http.get(this.urlAddress + 'Product/GetProductByTypeId/' +  id);
+
+   return this._http.get(this.urlAddress + 'Product/GetProductByTypeId/' + id);
+
   }
 }

@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../product/product.modle';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SaleService } from '../sale.service';
 import { CommonService } from '../../commonservice/common.service';
 import { Sale } from '../sale.model';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { ProductType } from '../../ProductType/product-type.model';
 import { Utility } from 'src/app/appCore/Utility/Utility';
+import { ProductDisplay } from '../product-display.interface';
 
 @Component({
   selector: 'app-sale',
@@ -25,9 +26,13 @@ export class SaleComponent implements OnInit {
 
 
   displayedColumns: string[] = ['Sl', 'Product', 'Price', 'Discount', 'Amount'];
-  dataSource = ELEMENT_DATA;
 
-  @ViewChild(MatTable, { static: true }) table: MatTable<PeriodicElement>;
+  productDisplay: ProductDisplay[] = [
+    // { product: 'book', price: 120, discount: 10, amount: 110 },
+    // { product: 'pen', price: 20, discount: 2, amount: 18 },
+  ];
+
+  dataSource = new MatTableDataSource<ProductDisplay>();
 
 
   constructor(
@@ -39,6 +44,7 @@ export class SaleComponent implements OnInit {
 
     // tslint:disable-next-line: variable-name
     private _commonService: CommonService,
+
   ) { }
 
   ngOnInit() {
@@ -59,11 +65,8 @@ export class SaleComponent implements OnInit {
 
   onChange(event) {
     const selectedPTId = event.value;
-
     this._commonService.getPeoductByTypeId(selectedPTId).subscribe(res => {
-      if (Utility.hasNoError(res)) {
-        this.productList = res as Product[];
-      }
+      this.productList = res as any[];
 
     });
 
@@ -71,15 +74,19 @@ export class SaleComponent implements OnInit {
 
     if (Utility.hasNoError(this.productList)) {
 
+      this.productDisplay = [];
       this.productList.forEach(pro => {
-        this.dataSource.push({
+        this.productDisplay.push({
+          productTypeId: pro.productTypeId,
+          productId: pro.id,
           product: pro.name,
           price: pro.price,
           discount: 0,
           amount: 0,
         });
 
-        this.table.renderRows();
+        this.dataSource.data = this.productDisplay;
+
       });
     }
   }
@@ -89,16 +96,9 @@ export class SaleComponent implements OnInit {
       this.productFormInstance();
     });
   }
+
+
 }
 
-export interface PeriodicElement {
-  product: string;
-  price: number;
-  discount: number;
-  amount: number;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  // { product: 'book', price: 120, discount: 10, amount: 110 },
-  // { product: 'pen', price: 20, discount: 2, amount: 18 },
-];
+

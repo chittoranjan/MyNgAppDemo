@@ -1,5 +1,5 @@
 <div class="content">
-    <div class="card-container">
+    <div class="">
         <div class="">
             <div>
                 <h3>Sale Entry</h3>
@@ -38,6 +38,8 @@
                             <mat-form-field appearance="outline" class="">
                                 <mat-label>Product Type</mat-label>
                                 <mat-select (selectionChange)="onChange($event)" >
+                                    <mat-option> -- Select --</mat-option>
+                                    
                                     <mat-option *ngFor="let productType of productTypeList" [value]="productType.id" >
                                         {{ productType.name }}
                                     </mat-option>
