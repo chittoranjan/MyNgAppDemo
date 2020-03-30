@@ -61,7 +61,11 @@ namespace NgAppDemo.Controllers
         [HttpGet("GetProductByTypeId/{id:int}")]
         public async Task<ActionResult<List<Product>>> GetProductByTypeId(int id)
         {
-            var dataList = await _context.Products.Include(pt=>pt.ProductType).Where(c=>c.ProductTypeId==id).ToListAsync();
+            var dataList = await _context.Products
+                .AsQueryable()
+                .Include(pt=>pt.ProductType)
+                .Where(c=>c.ProductTypeId==id)
+                .ToListAsync();
 
             if (dataList == null)
             {

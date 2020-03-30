@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ProductType } from '../../ProductType/product-type.model';
 import { Utility } from 'src/app/appCore/Utility/Utility';
 import { ProductDisplay } from '../product-display.interface';
+import { SaleDetails } from '../sale-details.model';
 
 @Component({
   selector: 'app-sale',
@@ -21,11 +22,12 @@ export class SaleComponent implements OnInit {
 
   productTypeList: ProductType[] = [];
   productList: Product[] = [];
+  saleDetails: SaleDetails[] = [];
 
   saleForm: FormGroup;
 
 
-  displayedColumns: string[] = ['Sl', 'Product', 'Price', 'Discount', 'Amount'];
+  displayedColumns: string[] = ['Sl', 'Product', 'Price', 'ProductId', 'Discount', 'Amount'];
 
   productDisplay: ProductDisplay[] = [
     // { product: 'book', price: 120, discount: 10, amount: 110 },
@@ -64,31 +66,32 @@ export class SaleComponent implements OnInit {
   }
 
   onChange(event) {
+
     const selectedPTId = event.value;
+
     this._commonService.getPeoductByTypeId(selectedPTId).subscribe(res => {
-      this.productList = res as any[];
+      this.productList = res as Product[];
+      if (Utility.hasNoError(this.productList)) {
+
+        this.productDisplay = [];
+        this.productList.forEach(pro => {
+          this.productDisplay.push({
+            productTypeId: pro.productTypeId,
+            productId: pro.id,
+            product: pro.name,
+            price: pro.price,
+            discount: 0,
+            amount: 0,
+          });
+
+          this.dataSource.data = this.productDisplay;
+
+        });
+      }
 
     });
 
-    console.log(this.productList);
 
-    if (Utility.hasNoError(this.productList)) {
-
-      this.productDisplay = [];
-      this.productList.forEach(pro => {
-        this.productDisplay.push({
-          productTypeId: pro.productTypeId,
-          productId: pro.id,
-          product: pro.name,
-          price: pro.price,
-          discount: 0,
-          amount: 0,
-        });
-
-        this.dataSource.data = this.productDisplay;
-
-      });
-    }
   }
 
   save(model: Sale) {
