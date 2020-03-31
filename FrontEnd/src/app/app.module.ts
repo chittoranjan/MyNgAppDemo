@@ -19,10 +19,11 @@ import { SaleModule } from './MyNgApp/ProductSaleModule/sales/sale.module';
 
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'ProductType', component: ProducttypeComponent },
   { path: 'Product', component: ProductComponent },
   { path: 'Sale', component: SaleComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+ 
 ];
 
 

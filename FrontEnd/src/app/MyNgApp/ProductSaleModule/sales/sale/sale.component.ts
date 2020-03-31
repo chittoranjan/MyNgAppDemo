@@ -94,7 +94,13 @@ export class SaleComponent implements OnInit {
 
   }
 
+  saleItems(event) {
+    const data = event.value;
+    console.log(data);
+  }
+
   save(model: Sale) {
+
     this._service.save(model).subscribe(res => {
       this.productFormInstance();
     });
