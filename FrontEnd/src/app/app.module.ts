@@ -15,7 +15,7 @@ import { ProductModule } from './MyNgApp/ProductSaleModule/product/product.modul
 import { ProductComponent } from './MyNgApp/ProductSaleModule/product/product/product.component';
 import { SaleComponent } from './MyNgApp/ProductSaleModule/sales/sale/sale.component';
 import { SaleModule } from './MyNgApp/ProductSaleModule/sales/sale.module';
-
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 const appRoutes: Routes = [
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'ProductType', component: ProducttypeComponent },
   { path: 'Product', component: ProductComponent },
   { path: 'Sale', component: SaleComponent },
- 
+
 ];
 
 
@@ -47,7 +47,10 @@ const appRoutes: Routes = [
 
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  ],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
