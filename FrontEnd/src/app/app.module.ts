@@ -1,30 +1,19 @@
 
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { MaterialModule } from './appCore/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ProducttypeComponent } from './MyNgApp/ProductSaleModule/ProductType/producttype/producttype.component';
 import { ProducttypeModule } from './MyNgApp/ProductSaleModule/ProductType/producttype.module';
 import { ProductModule } from './MyNgApp/ProductSaleModule/product/product.module';
-import { ProductComponent } from './MyNgApp/ProductSaleModule/product/product/product.component';
-import { SaleComponent } from './MyNgApp/ProductSaleModule/sales/sale/sale.component';
 import { SaleModule } from './MyNgApp/ProductSaleModule/sales/sale.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { AppRoutingModule } from './app-routing.module';
 
-
-const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'ProductType', component: ProducttypeComponent },
-  { path: 'Product', component: ProductComponent },
-  { path: 'Sale', component: SaleComponent },
-
-];
 
 
 @NgModule({
@@ -34,13 +23,17 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
+
+
     ProducttypeModule,
     ProductModule,
     SaleModule,
@@ -49,6 +42,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: APP_BASE_HREF, useValue: '/' },
   ],
   bootstrap: [AppComponent],
 

@@ -6,6 +6,7 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
   }
 
   h1,
@@ -55,7 +56,7 @@
     max-width: 960px;
     flex-direction: column;
     align-items: center;
-    background-color: red;
+
   }
 
   svg.material-icons {
@@ -293,24 +294,24 @@
 <div class="toolbar" role="banner">
   <img width="40" alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-  <span class="nav-color"><a routerLink="">Ng App</a></span>
+  <span class="nav-color"><a routerLink="">{{title}}</a></span>
 
   <div class="nav-color">
 
     <span [matMenuTriggerFor]="salesPoint"> <a>Sales Point</a> </span>
 
     <mat-menu #salesPoint="matMenu">
-      <span mat-menu-item [matMenuTriggerFor]="productMent">Product</span>
+      <span mat-menu-item [matMenuTriggerFor]="productMenu">Product</span>
       <span mat-menu-item [matMenuTriggerFor]="salesMene">Sales</span>
     </mat-menu>
 
-    <mat-menu #productMent="matMenu">
-      <span mat-menu-item><a routerLink="ProductType">Product Type</a></span>
-      <span mat-menu-item><a routerLink="Product">Product</a></span>
+    <mat-menu #productMenu="matMenu">
+      <a routerLink="ProductType"><span mat-menu-item>Product Type</span></a>
+      <a routerLink="Product"> <span mat-menu-item>Product</span> </a>
     </mat-menu>
 
     <mat-menu #salesMene="matMenu">
-      <span mat-menu-item><a routerLink="Sale">Sale</a></span>
+      <a routerLink="Sale"> <span mat-menu-item>Sale</span> </a>
     </mat-menu>
 
   </div>
@@ -339,5 +340,6 @@
   </a> -->
 </div>
 
-
-<router-outlet></router-outlet>
+<div class="">
+  <router-outlet></router-outlet>
+</div>
