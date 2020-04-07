@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     // tslint:disable-next-line: variable-name
     private _formBuilder: FormBuilder,
-    public authService: AuthService
-  ) {
+    public authService: AuthService) {
+
     this.message = '';
   }
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   login(model: Login): boolean {
     this.message = '';
-    if (!this.authService.login(model.username, model.password)) {
+    if (!this.authService.login(model)) {
       this.message = 'Incorrect credentials.';
       setTimeout(function() {
         this.message = '';

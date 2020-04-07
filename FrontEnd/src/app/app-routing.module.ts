@@ -5,11 +5,13 @@ import { ProductComponent } from './MyNgApp/ProductSaleModule/product/product/pr
 import { SaleComponent } from './MyNgApp/ProductSaleModule/sales/sale/sale.component';
 import { LoggedInGuard } from './MyNgApp/AuthService/logged-in.guard';
 import { LoginComponent } from './MyNgApp/AuthService/login/login/login.component';
+import { HomeComponent } from './MyNgApp/PublicModule/home/home.component';
 
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'Home', pathMatch: 'full' },
+  { path: 'Home', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'ProductType', component: ProducttypeComponent, canActivate: [LoggedInGuard] },
   { path: 'Product', component: ProductComponent, canActivate: [LoggedInGuard] },

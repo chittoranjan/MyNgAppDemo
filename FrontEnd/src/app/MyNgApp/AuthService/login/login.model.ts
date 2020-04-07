@@ -1,5 +1,5 @@
 export class Login {
 
-    username: string = '';
-    password: string = '';
+    username: string = 'chitto';
+    password: string = '123456';
 }

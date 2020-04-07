@@ -16,12 +16,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AUTH_PROVIDERS } from './MyNgApp/AuthService/auth.service';
 import { LoggedInGuard } from './MyNgApp/AuthService/logged-in.guard';
 import { LoginModule } from './MyNgApp/AuthService/login/login.module';
+import { HomeComponent } from './MyNgApp/PublicModule/home/home.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +49,8 @@ import { LoginModule } from './MyNgApp/AuthService/login/login.module';
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     // { provide: LocationStrategy, useClass: HashLocationStrategy },
     // { provide: APP_BASE_HREF, useValue: '/' },
-    AUTH_PROVIDERS,
-    LoggedInGuard,
+    // AUTH_PROVIDERS,
+    // LoggedInGuard,
 
   ],
   bootstrap: [AppComponent],

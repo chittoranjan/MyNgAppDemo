@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
 
 export class LoggedInGuard implements CanActivate {
 
-    constructor(private authService: AuthService) {
-    }
+    constructor(
+        private authService: AuthService
+    ) { }
 
     canActivate(
         next: ActivatedRouteSnapshot,

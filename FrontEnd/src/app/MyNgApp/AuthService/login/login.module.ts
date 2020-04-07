@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/appCore/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login/login.component';
+import { AUTH_PROVIDERS } from '../auth.service';
+import { LoggedInGuard } from '../logged-in.guard';
 
 
 
@@ -15,6 +17,11 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
-  ]
+  ],
+  providers: [
+    AUTH_PROVIDERS,
+    LoggedInGuard,
+
+  ],
 })
 export class LoginModule { }

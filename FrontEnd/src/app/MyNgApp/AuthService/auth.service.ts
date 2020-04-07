@@ -7,9 +7,10 @@ export class AuthService {
 
   constructor() { }
 
-  login(user: string, password: string): boolean {
-    if (user === 'chitto' && password === '123456') {
-      localStorage.setItem('username', user);
+  login(model): boolean {
+
+    if (model.username === 'chitto' && model.password === '123456') {
+      localStorage.setItem('username', model.username);
       return true;
     }
     return false;
@@ -22,11 +23,12 @@ export class AuthService {
   getUser(): any {
     return localStorage.getItem('username');
   }
+
   isLoggedIn(): boolean {
     return this.getUser() !== null;
   }
 }
 
 export const AUTH_PROVIDERS: Array<any> = [
-  {provider: AuthService, useClass: AuthService}
+  {provider: AuthService, useClass: AuthService},
 ];
