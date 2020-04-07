@@ -28,27 +28,23 @@ namespace NgAppDemo.Controllers
                 .Include(c => c.Products)
                 .ToListAsync();
 
-            var productList = dataList.Select(c=>c.Products);
-            var products=new List<Product>();
-            foreach (var i in productList)
+            var productList = dataList.Select(c => c.Products);
+            var products = new List<Product>();
+            foreach (var p in productList)
             {
-                products.AddRange(i);
+                products.AddRange(p);
             }
 
-           
+
             var jsonData = dataList.Select(c => new
             {
                 c.Id,
                 c.Name,
                 c.Description,
-                Products = c.Products  = new List<Product>()
-                {
-                    
-                }
-
+                Products = products.Select(p => new {p.Id, p.Name, p.Description, p.Price, p.ProductTypeId})
+                    .Where(k => k.ProductTypeId == c.Id),
             });
-           return Ok(jsonData);
-         
+            return Ok(jsonData);
         }
 
         // GET: api/ProductType/5
@@ -106,7 +102,7 @@ namespace NgAppDemo.Controllers
             _context.ProductTypes.Add(productType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductType", new { id = productType.Id }, productType);
+            return CreatedAtAction("GetProductType", new {id = productType.Id}, productType);
         }
 
         // DELETE: api/ProductType/5
