@@ -13,6 +13,9 @@ import { ProductModule } from './MyNgApp/ProductSaleModule/product/product.modul
 import { SaleModule } from './MyNgApp/ProductSaleModule/sales/sale.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
+import { AUTH_PROVIDERS } from './MyNgApp/AuthService/auth.service';
+import { LoggedInGuard } from './MyNgApp/AuthService/logged-in.guard';
+import { LoginModule } from './MyNgApp/AuthService/login/login.module';
 
 
 
@@ -33,7 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
     FlexLayoutModule,
     AppRoutingModule,
 
-
+    LoginModule,
     ProducttypeModule,
     ProductModule,
     SaleModule,
@@ -44,6 +47,9 @@ import { AppRoutingModule } from './app-routing.module';
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     // { provide: LocationStrategy, useClass: HashLocationStrategy },
     // { provide: APP_BASE_HREF, useValue: '/' },
+    AUTH_PROVIDERS,
+    LoggedInGuard,
+
   ],
   bootstrap: [AppComponent],
 

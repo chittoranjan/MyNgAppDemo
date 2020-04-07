@@ -298,7 +298,7 @@
 
   <div class="nav-color">
 
-    <span [matMenuTriggerFor]="salesPoint"> <a>Sales Point</a> </span>
+    <span [matMenuTriggerFor]="salesPoint" *ngIf="authService.getUser()"> <a>Sales Point</a> </span>
 
     <mat-menu #salesPoint="matMenu">
       <span mat-menu-item [matMenuTriggerFor]="productMenu">Product</span>
@@ -312,6 +312,19 @@
 
     <mat-menu #salesMene="matMenu">
       <a routerLink="Sale"> <span mat-menu-item>Sale</span> </a>
+    </mat-menu>
+
+  </div>
+
+  <div class="nav-color" style="position: absolute; right:0px;">
+
+    <span *ngIf="!authService.getUser()" style="margin-right: 20px;"> <a routerLink="Login"><b>Log in</b></a></span>
+
+    <span *ngIf="authService.getUser()" mat-menu-item [matMenuTriggerFor]="logOut">Logged in as
+      {{authService.getUser()| uppercase}}</span>
+
+    <mat-menu #logOut="matMenu">
+      <span mat-menu-item (click)="logout()" type="submit"> Log out</span>
     </mat-menu>
 
   </div>
