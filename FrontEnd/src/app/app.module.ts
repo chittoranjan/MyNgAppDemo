@@ -17,13 +17,13 @@ import { AUTH_PROVIDERS } from './MyNgApp/AuthService/auth.service';
 import { LoggedInGuard } from './MyNgApp/AuthService/logged-in.guard';
 import { LoginModule } from './MyNgApp/AuthService/login/login.module';
 import { HomeComponent } from './MyNgApp/PublicModule/home/home.component';
+import { PageNotFoundComponent } from './MyNgApp/PublicModule/page-not-found/page-not-found.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

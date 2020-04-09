@@ -41,9 +41,13 @@ namespace NgAppDemo.Controllers
                 c.Id,
                 c.Name,
                 c.Description,
-                Products = products.Select(p => new {p.Id, p.Name, p.Description, p.Price, p.ProductTypeId})
+                Products = products.Select(p => new
+                    {
+                        p.Id, p.Name, p.Description, p.Price, p.ProductTypeId
+                    })
                     .Where(k => k.ProductTypeId == c.Id),
             });
+
             return Ok(jsonData);
         }
 
