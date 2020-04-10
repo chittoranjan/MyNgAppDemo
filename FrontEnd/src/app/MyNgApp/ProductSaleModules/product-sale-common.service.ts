@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CommonService {
+export class ProductSaleCommonService {
 
   private urlAddress = ApiConfig.BaseUrl;
 

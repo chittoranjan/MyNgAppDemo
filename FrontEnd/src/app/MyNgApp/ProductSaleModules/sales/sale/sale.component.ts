@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../product/product.modle';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SaleService } from '../sale.service';
-import { CommonService } from '../../commonservice/common.service';
+import { ProductSaleCommonService } from '../../product-sale-common.service';
 import { Sale } from '../sale.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductType } from '../../ProductType/product-type.model';
@@ -45,7 +45,7 @@ export class SaleComponent implements OnInit {
     private _service: SaleService,
 
     // tslint:disable-next-line: variable-name
-    private _commonService: CommonService,
+    private _commonService: ProductSaleCommonService,
 
   ) { }
 

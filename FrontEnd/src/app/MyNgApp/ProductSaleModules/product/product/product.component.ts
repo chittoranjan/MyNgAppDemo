@@ -3,7 +3,7 @@ import { ProductType } from '../../ProductType/product-type.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { Product } from '../product.modle';
-import { CommonService } from '../../commonservice/common.service';
+import { ProductSaleCommonService } from '../../product-sale-common.service';
 
 @Component({
   selector: 'app-product',
@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
     private _service: ProductService,
 
     // tslint:disable-next-line: variable-name
-    private _commonService: CommonService,
+    private _commonService: ProductSaleCommonService,
   ) { }
 
   ngOnInit() {
