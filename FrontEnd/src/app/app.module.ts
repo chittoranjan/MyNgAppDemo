@@ -13,11 +13,8 @@ import { ProductModule } from './MyNgApp/ProductSaleModule/product/product.modul
 import { SaleModule } from './MyNgApp/ProductSaleModule/sales/sale.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
-import { AUTH_PROVIDERS } from './MyNgApp/AuthService/auth.service';
-import { LoggedInGuard } from './MyNgApp/AuthService/logged-in.guard';
 import { LoginModule } from './MyNgApp/AuthService/login/login.module';
-import { HomeComponent } from './MyNgApp/PublicModule/home/home.component';
-import { PageNotFoundComponent } from './MyNgApp/PublicModule/page-not-found/page-not-found.component';
+
 
 
 
