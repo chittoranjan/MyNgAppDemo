@@ -8,7 +8,6 @@ import { SharedModule } from 'src/app/appCore/Shared/shared.module';
   declarations: [SaleComponent],
   imports: [
     SharedModule
-
   ]
 })
 export class SaleModule { }

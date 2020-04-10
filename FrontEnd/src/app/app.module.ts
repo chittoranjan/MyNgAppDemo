@@ -35,10 +35,6 @@ import { ProductSaleCommonModule } from './MyNgApp/ProductSaleModules/product-sa
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    // { provide: LocationStrategy, useClass: HashLocationStrategy },
-    // { provide: APP_BASE_HREF, useValue: '/' },
-    // AUTH_PROVIDERS,
-    // LoggedInGuard,
 
   ],
   bootstrap: [AppComponent],

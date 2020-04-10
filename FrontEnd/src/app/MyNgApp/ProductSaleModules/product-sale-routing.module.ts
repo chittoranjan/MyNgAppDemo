@@ -9,9 +9,9 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
 
-  { path: 'ProductType', component: ProducttypeComponent, canActivate: [LoggedInGuard] },
-  { path: 'Product', component: ProductComponent, canActivate: [LoggedInGuard] },
-  { path: 'Sale', component: SaleComponent, canActivate: [LoggedInGuard] },
+      { path: 'ProductType', component: ProducttypeComponent, canActivate: [LoggedInGuard] },
+      { path: 'Product', component: ProductComponent, canActivate: [LoggedInGuard] },
+      { path: 'Sale', component: SaleComponent, canActivate: [LoggedInGuard] },
 
 ];
 
