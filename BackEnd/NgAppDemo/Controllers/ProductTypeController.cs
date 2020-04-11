@@ -106,7 +106,8 @@ namespace NgAppDemo.Controllers
             _context.ProductTypes.Add(productType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductType", new {id = productType.Id}, productType);
+           // return CreatedAtAction("GetProductType", new {id = productType.Id}, productType);
+           return Ok(StatusCode(201));
         }
 
         // DELETE: api/ProductType/5

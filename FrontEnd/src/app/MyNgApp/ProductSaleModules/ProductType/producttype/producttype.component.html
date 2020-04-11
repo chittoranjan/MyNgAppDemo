@@ -5,29 +5,48 @@
                 <h3>Product Type Entry</h3>
             </div>
             <div>
-                <form [formGroup]="productTypeForm" (ngSubmit)="save(productTypeForm.value)">
-    
+                <form [formGroup]="productTypeForm" (ngSubmit)="save(productTypeForm.value)" >
+
                     <input type="hidden" formControlName="id">
+
+                    <div [ngClass]="{'ng-invalid': formErrors.name}">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Name</mat-label>
+                            <input autocomplete="off" matInput formControlName="name" (blur)="logValidationErrors">
+
+                        </mat-form-field>
                     
-                        <div>
-                            <mat-form-field appearance="outline"  class="example-full-width">
-                                <mat-label>Name</mat-label>
-                                <input autocomplete="off" matInput formControlName="name">
-                            </mat-form-field>
-                        </div>
-                  
-                        <div>
-                            <mat-form-field appearance="outline"  class="example-full-width">
-                                <mat-label>Description</mat-label>
-                                <textarea autocomplete="off" matInput formControlName="description"></textarea>
-                            </mat-form-field>
-                        </div>
-                  
-                        <button mat-stroked-button color="warn" type="submit"> Create </button>
-                  
-                  </form>
-            </div>
+                            <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error> 
+                        
+                    </div>
+
+
+                    <div>
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Description</mat-label>
+                            <textarea autocomplete="off" matInput formControlName="description"></textarea>
+                        </mat-form-field>
+
+                        <span *ngIf="productTypeForm.get('description').errors &&
+                        (productTypeForm.get('description').touched || productTypeForm.get('description').dirty)">
+                            <mat-error *ngIf="productTypeForm.get('description').errors.required">Description is
+                                required.</mat-error>
+
+                        </span>
+                        <span *ngIf="productTypeForm.get('description').errors &&
+                        (productTypeForm.get('description').touched || productTypeForm.get('description').dirty)">
+                            <mat-error
+                                *ngIf="productTypeForm.get('description').errors.minlength || productTypeForm.get('description').errors.maxlength">
+                                Description must be 3 to 200 chracters.</mat-error>
+
+                        </span>
+                    </div>
+
+                    <button mat-stroked-button color="priamry" type="submit"> Create </button>
+
+                </form>
+            </div> 
         </div>
-        
+
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../product/product.modle';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { SaleService } from '../sale.service';
 import { ProductSaleCommonService } from '../../product-sale-common.service';
 import { Sale } from '../sale.model';
@@ -62,49 +62,85 @@ export class SaleComponent implements OnInit {
   }
 
   productFormInstance() {
-    this.saleForm = this._formBuilder.group(new Sale());
-  }
+    this.saleForm = this._formBuilder.group({
+      id: new FormControl(),
+      name: new FormControl(),
+      date: new FormControl(),
+      description: new FormControl(),
 
-  onChange(event) {
+      saleDetails: this._formBuilder.array([
+        this.saleDetailsFormObj()
+      ])
 
-    const selectedPTId = event.value;
+  });
+}
 
-    this._commonService.getPeoductByTypeId(selectedPTId).subscribe(res => {
-      this.productList = res as Product[];
-      if (Utility.hasNoError(this.productList)) {
+saleDetailsFormObj() {
+  return this._formBuilder.group({
+    id: new FormControl(),
+    saleId: new FormControl(),
+    productId: new FormControl(),
+    discount: new FormControl(),
+    amount: new FormControl()
+  });
+}
 
-        this.productDisplay = [];
-        this.productList.forEach(pro => {
-          this.productDisplay.push({
-            productTypeId: pro.productTypeId,
-            productId: pro.id,
-            product: pro.name,
-            price: pro.price,
-            discount: 0,
-            amount: 0,
-          });
+onChange(event) {
 
-          this.dataSource.data = this.productDisplay;
+  const selectedPTId = event.value;
 
+  this._commonService.getPeoductByTypeId(selectedPTId).subscribe(res => {
+    this.productList = res as Product[];
+    if (Utility.hasNoError(this.productList)) {
+
+      this.productDisplay = [];
+      this.productList.forEach(pro => {
+        this.productDisplay.push({
+          productTypeId: pro.productTypeId,
+          productId: pro.id,
+          product: pro.name,
+          price: pro.price,
+          discount: 0,
+          amount: 0,
         });
-      }
 
-    });
+        this.dataSource.data = this.productDisplay;
+
+      });
+    }
+
+  });
 
 
-  }
+}
 
-  saleItems(event) {
-    const data = event.value;
-    console.log(data);
-  }
+saleItems(event) {
+  const data = event.value;
+  console.log(data);
+}
 
-  save(model: Sale) {
+save(value) {
 
-    this._service.save(model).subscribe(res => {
-      this.productFormInstance();
-    });
-  }
+  const sd = {
+    id: 0,
+    saleId: 0,
+    productId: 0,
+    discount: value.saleDetails.discount,
+    amount: value.saleDetails.amount
+
+  };
+  this.saleDetails.push(sd as SaleDetails);
+  const model = {
+    id: 0,
+    name: value.name,
+    date: value.date,
+    description: value.description,
+    saleDetailses: this.saleDetails
+  };
+  this._service.save(model).subscribe(res => {
+    this.productFormInstance();
+  });
+}
 
 
 }

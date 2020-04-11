@@ -6,5 +6,5 @@ export class Sale {
     date: Date = new Date();
     description: string = '';
 
-    saleDetails: SaleDetails = null;
+    saleDetailses: SaleDetails[] = [];
 }
