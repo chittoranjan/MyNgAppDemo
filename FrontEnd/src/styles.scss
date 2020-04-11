@@ -37,3 +37,12 @@ div.container {
 //   .ng-invalid  {
 //     color: #a94442; /* red */
 //   }
+
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin-bottom: -11px !important;
+}
+
+mat-error {
+    margin-top: -8px !important;
+    margin-bottom: 6px !important;
+}
