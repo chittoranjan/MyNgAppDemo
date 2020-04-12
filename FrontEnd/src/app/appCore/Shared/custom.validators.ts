@@ -1,4 +1,4 @@
-import { AbstractControl, Validators } from '@angular/forms';
+import { AbstractControl, Validators, FormGroup } from '@angular/forms';
 
 export class CustomValidators {
 
@@ -18,15 +18,31 @@ export class CustomValidators {
             minlength: 'Email must be greater then 2 characters.',
             maxlength: 'Email must be less then 200 characters.',
             emailDomain: 'Email domain should be' + ' ' + '{{emailDomain}}',
+        },
+        confirmEmail: {
+            required: 'Confirm Email address is required.',
+        },
+        emailGroup: {
+            emailMismatch: 'Email and Confirm Email do not match.',
+        },
+        phone: {
+            required: 'Phone No is required.',
+        },
+        email1: {
+            required: 'Email address is required.',
+            minlength: 'Email must be greater then 2 characters.',
+            maxlength: 'Email must be less then 200 characters.',
+            emailDomain: 'Email domain should be' + ' ' + '{{emailDomain}}',
         }
     };
 
     static propartyLength = {
+        id: 0,
         minlength: 3,
         maxlength: 100,
-        nameLength: 100,
-        shortDesctiptionLength: 250,
-        descriptionLength: 500,
+        name: 100,
+        shortDescription: 250,
+        description: 500,
     };
 
     static emailDomainList = {
@@ -34,8 +50,13 @@ export class CustomValidators {
         aits: 'aits.com',
     };
 
+    static stringNameList = {
+        email: 'email',
+        confirmEmail: 'confirmEmail',
+    };
+
     // This methode use for email domain validation
-    // use closer function for check any domain name if we pass to the function
+    // use closer function can check any domain name if we pass domain to the function
 
     static emailDomain(domainName: string) {
         return (control: AbstractControl): { [key: string]: any } | null => {
@@ -50,5 +71,32 @@ export class CustomValidators {
         };
     }
 
+    // This function compair with two Emails
+    // use closer function can check Email with compairable Email if we pass to the function
+    static matchEmail(email: string, confirmEmail: string) {
+        return (mailGroup: AbstractControl): { [key: string]: any } | null => {
+            const emailControl = mailGroup.get(email);
+            const confirmEmailControl = mailGroup.get(confirmEmail);
+            if (emailControl.value === confirmEmailControl.value || confirmEmailControl.pristine) {
+                return null;
+            } else {
+                return { emailMismatch: true };
+            }
+        };
+    }
 
+
+    // This methode use for checkbox or radio button selected input field validators
+    static onRadioOrCheckboxSelectValidationErrors(selectedValue: string, form: FormGroup) {
+        const formPropartyValue = form.get('phone');
+        const formPropartyValueEmail = form.get('email1'); // dont work it
+        if (selectedValue === 'phone') {
+            formPropartyValue.setValidators([Validators.required]);
+            formPropartyValueEmail.clearValidators(); // dont work it
+        } else {
+
+            formPropartyValue.clearValidators();
+        }
+        formPropartyValue.updateValueAndValidity();
+    }
 }

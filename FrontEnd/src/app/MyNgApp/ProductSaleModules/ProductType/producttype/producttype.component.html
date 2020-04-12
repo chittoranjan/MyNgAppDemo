@@ -16,14 +16,50 @@
                         </mat-form-field>
                         <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
                     </div>
-
-                    <div [ngClass]="{'ng-invalid': formErrors.email}">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Email</mat-label>
-                            <input autocomplete="off" matInput formControlName="email" (blur)="logValidationErrors()">
-                        </mat-form-field>
-                        <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="contactPrefence">
+                            <mat-radio-button value="email1" [checked]="true">Email</mat-radio-button>
+                            <mat-radio-button value="phone">Phone</mat-radio-button>
+                          </mat-radio-group>
                     </div>
+                    <div [ngClass]="{'ng-invalid': formErrors.email1}">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Email1</mat-label>
+                            <input autocomplete="off" matInput formControlName="email1"
+                                (blur)="logValidationErrors()">
+                        </mat-form-field>
+                        <mat-error *ngIf="formErrors.email1">{{formErrors.email1}}</mat-error>
+                    </div>
+                    <div [ngClass]="{'ng-invalid': formErrors.phone}">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Phone</mat-label>
+                            <input autocomplete="off" matInput formControlName="phone"
+                                (blur)="logValidationErrors()">
+                        </mat-form-field>
+                        <mat-error *ngIf="formErrors.phone">{{formErrors.phone}}</mat-error>
+                    </div>
+                    <div formGroupName="emailGroup">
+                        <div [ngClass]="{'ng-invalid': formErrors.email}">
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                <mat-label>Email</mat-label>
+                                <input autocomplete="off" matInput formControlName="email"
+                                    (blur)="logValidationErrors()">
+                            </mat-form-field>
+                            <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+                        </div>
+
+                        <div [ngClass]="{'ng-invalid': formErrors.confirmEmail || formErrors.emailGroup}">
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                <mat-label>Confirm Email</mat-label>
+                                <input autocomplete="off" matInput formControlName="confirmEmail"
+                                    (blur)="logValidationErrors()">
+                            </mat-form-field>
+                            <mat-error *ngIf="formErrors.confirmEmail || formErrors.emailGroup">
+                                {{formErrors.confirmEmail ? formErrors.confirmEmail: formErrors.emailGroup}}
+                            </mat-error>
+                        </div>
+                    </div>
+                    
 
                     <div [ngClass]="{'ng-invalid': formErrors.description}">
                         <mat-form-field appearance="outline" class="example-full-width">

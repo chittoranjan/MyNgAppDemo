@@ -19,6 +19,11 @@ export class ProducttypeComponent implements OnInit {
     name: '',
     description: '',
     email: '',
+    confirmEmail: '',
+    emailGroup: '',
+    contactPrefence: '',
+    phone: '',
+    email1: '',
   };
 
   constructor(
@@ -37,56 +42,63 @@ export class ProducttypeComponent implements OnInit {
     });
 
     // This methode call for checkbox or radio button check validator check
-    this.productTypeForm.get('checkbox').valueChanges.subscribe((data: string) => {
-      this.onRadioOrCheckboxSelectValidationErrors(data);
+    this.productTypeForm.get('contactPrefence').valueChanges.subscribe((data: string) => {
+      CustomValidators.onRadioOrCheckboxSelectValidationErrors(data, this.productTypeForm);
     });
   }
 
   productTypeFormInstance() {
     this.productTypeForm = this._formBuilder.group({
-      id: [0],
+      id: [CustomValidators.propartyLength.id],
+
       name: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
       Validators.maxLength(CustomValidators.propartyLength.maxlength)]],
+
       description: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
       Validators.maxLength(CustomValidators.propartyLength.maxlength)]],
-      email: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
-      Validators.maxLength(CustomValidators.propartyLength.maxlength), CustomValidators.emailDomain(CustomValidators.emailDomainList.abc)]]
+
+      emailGroup: this._formBuilder.group({
+
+        email: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
+        Validators.maxLength(CustomValidators.propartyLength.maxlength),
+        CustomValidators.emailDomain(CustomValidators.emailDomainList.abc)]],
+
+        confirmEmail: ['', [Validators.required]]
+      }, { validators: CustomValidators.matchEmail('email', 'confirmEmail') }),
+
+      contactPrefence: [''],
+      email1: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
+        Validators.maxLength(CustomValidators.propartyLength.maxlength),
+        CustomValidators.emailDomain(CustomValidators.emailDomainList.aits)]],
+      phone: [''],
+
+
     });
 
   }
 
 
-  // This methode use for checkbox or radio button selected input field validators
-  onRadioOrCheckboxSelectValidationErrors(selectedValue: string) {
-    const formPropartyValue = this.productTypeForm.get('checkbox');
-    if (selectedValue === 'checkbox') {
-      formPropartyValue.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(100)]);
-    } else {
-
-      formPropartyValue.clearValidators();
-    }
-    formPropartyValue.updateValueAndValidity();
-  }
-
   // This methode use for all form field validator check
-  logValidationErrors(group: FormGroup = this.productTypeForm): void {
+  logValidationErrors(group: FormGroup = this.productTypeForm) {
     Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.get(key);
-      if (abstractControl instanceof FormGroup) {
-        this.logValidationErrors(abstractControl);
-      } else {
-        this.formErrors[key] = '';
-        if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)) {
-          const messages = CustomValidators.validationMessages[key];
-          for (const errorKey in abstractControl.errors) {
-            if (errorKey) {
-              this.formErrors[key] += messages[errorKey] + ' ';
-            }
+      this.formErrors[key] = '';
+      if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)) {
+        const messages = CustomValidators.validationMessages[key];
+        for (const errorKey in abstractControl.errors) {
+          if (errorKey) {
+            this.formErrors[key] += messages[errorKey] + ' ';
           }
         }
       }
+
+      if (abstractControl instanceof FormGroup) {
+        this.logValidationErrors(abstractControl);
+      }
+
     });
   }
+
 
   save(form) {
 

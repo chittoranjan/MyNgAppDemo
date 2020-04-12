@@ -46,3 +46,7 @@ mat-error {
     margin-top: -8px !important;
     margin-bottom: 6px !important;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
