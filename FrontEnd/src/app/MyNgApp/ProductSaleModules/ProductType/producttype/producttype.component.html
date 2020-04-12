@@ -17,6 +17,14 @@
                         <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
                     </div>
 
+                    <div [ngClass]="{'ng-invalid': formErrors.email}">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input autocomplete="off" matInput formControlName="email" (blur)="logValidationErrors()">
+                        </mat-form-field>
+                        <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+                    </div>
+
                     <div [ngClass]="{'ng-invalid': formErrors.description}">
                         <mat-form-field appearance="outline" class="example-full-width">
                             <mat-label>Description</mat-label>
@@ -26,7 +34,8 @@
                         <mat-error *ngIf="formErrors.description">{{formErrors.description}}</mat-error>
                     </div>
 
-                    <button mat-stroked-button color="priamry" type="submit" [disabled]="!productTypeForm.valid"> Create</button>
+                    <button mat-stroked-button color="priamry" type="submit" [disabled]="!productTypeForm.valid">
+                        Create</button>
 
                 </form>
             </div>

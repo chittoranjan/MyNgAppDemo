@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, EmailValidator } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { ProducttypeService } from '../producttype.service';
 import { FormBuilder } from '@angular/forms';
 import { ProductType } from '../product-type.model';
+import { CustomValidators } from 'src/app/appCore/Shared/custom.validators';
 
 @Component({
   selector: 'app-producttype',
@@ -13,21 +14,6 @@ export class ProducttypeComponent implements OnInit {
 
   productTypeForm: FormGroup;
 
-  validationMessages = {
-    name: {
-      required: 'Name is required.',
-      minlength: 'Name must be greater then 2 characters.',
-      maxlength: 'Name must be less then 100 characters.'
-    },
-    description: {
-      required: 'Description is required.',
-      minlength: 'Description must be greater then 2 characters.',
-      maxlength: 'Description must be less then 200 characters.'
-    },
-    email: {
-      required: 'Email address is required.'
-    }
-  };
 
   formErrors = {
     name: '',
@@ -45,21 +31,44 @@ export class ProducttypeComponent implements OnInit {
   ngOnInit() {
     this.productTypeFormInstance();
 
+    // Thise methode call for form validator check
     this.productTypeForm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.productTypeForm);
+    });
+
+    // This methode call for checkbox or radio button check validator check
+    this.productTypeForm.get('checkbox').valueChanges.subscribe((data: string) => {
+      this.onRadioOrCheckboxSelectValidationErrors(data);
     });
   }
 
   productTypeFormInstance() {
     this.productTypeForm = this._formBuilder.group({
       id: [0],
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]]
-
+      name: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
+      Validators.maxLength(CustomValidators.propartyLength.maxlength)]],
+      description: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
+      Validators.maxLength(CustomValidators.propartyLength.maxlength)]],
+      email: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
+      Validators.maxLength(CustomValidators.propartyLength.maxlength), CustomValidators.emailDomain(CustomValidators.emailDomainList.abc)]]
     });
 
   }
 
+
+  // This methode use for checkbox or radio button selected input field validators
+  onRadioOrCheckboxSelectValidationErrors(selectedValue: string) {
+    const formPropartyValue = this.productTypeForm.get('checkbox');
+    if (selectedValue === 'checkbox') {
+      formPropartyValue.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(100)]);
+    } else {
+
+      formPropartyValue.clearValidators();
+    }
+    formPropartyValue.updateValueAndValidity();
+  }
+
+  // This methode use for all form field validator check
   logValidationErrors(group: FormGroup = this.productTypeForm): void {
     Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.get(key);
@@ -68,7 +77,7 @@ export class ProducttypeComponent implements OnInit {
       } else {
         this.formErrors[key] = '';
         if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)) {
-          const messages = this.validationMessages[key];
+          const messages = CustomValidators.validationMessages[key];
           for (const errorKey in abstractControl.errors) {
             if (errorKey) {
               this.formErrors[key] += messages[errorKey] + ' ';
@@ -92,3 +101,5 @@ export class ProducttypeComponent implements OnInit {
 
   }
 }
+
+
