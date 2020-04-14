@@ -15,16 +15,7 @@ export class ProducttypeComponent implements OnInit {
   productTypeForm: FormGroup;
 
 
-  formErrors = {
-    name: '',
-    description: '',
-    email: '',
-    confirmEmail: '',
-    emailGroup: '',
-    contactPrefence: '',
-    phone: '',
-    email1: '',
-  };
+  formErrors = CustomValidators.formErrors;
 
   constructor(
     // tslint:disable-next-line: variable-name
@@ -49,28 +40,30 @@ export class ProducttypeComponent implements OnInit {
 
   productTypeFormInstance() {
     this.productTypeForm = this._formBuilder.group({
-      id: [CustomValidators.propartyLength.id],
+      id: [CustomValidators.propertyType.number],
 
-      name: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
-      Validators.maxLength(CustomValidators.propartyLength.maxlength)]],
+      name: [CustomValidators.propertyType.string, [Validators.required, Validators.minLength(CustomValidators.propertyLength.minLength),
+      Validators.maxLength(CustomValidators.propertyLength.maxLength)]],
 
-      description: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
-      Validators.maxLength(CustomValidators.propartyLength.maxlength)]],
+      description: [CustomValidators.propertyType.string, [Validators.required,
+      Validators.minLength(CustomValidators.propertyLength.minLength), Validators.maxLength(CustomValidators.propertyLength.maxLength)]],
 
       emailGroup: this._formBuilder.group({
 
-        email: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
-        Validators.maxLength(CustomValidators.propartyLength.maxlength),
+        email: [CustomValidators.propertyType.string, [Validators.required, Validators.minLength(CustomValidators.propertyLength.minLength),
+        Validators.maxLength(CustomValidators.propertyLength.maxLength),
         CustomValidators.emailDomain(CustomValidators.emailDomainList.abc)]],
 
-        confirmEmail: ['', [Validators.required]]
+        confirmEmail: [CustomValidators.propertyType.string, [Validators.required]]
       }, { validators: CustomValidators.matchEmail('email', 'confirmEmail') }),
 
-      contactPrefence: [''],
-      email1: ['', [Validators.required, Validators.minLength(CustomValidators.propartyLength.minlength),
-        Validators.maxLength(CustomValidators.propartyLength.maxlength),
-        CustomValidators.emailDomain(CustomValidators.emailDomainList.aits)]],
-      phone: [''],
+      contactPrefence: [CustomValidators.propertyType.string],
+
+      email1: [CustomValidators.propertyType.string, [Validators.required, Validators.minLength(CustomValidators.propertyLength.minLength),
+      Validators.maxLength(CustomValidators.propertyLength.maxLength),
+      CustomValidators.emailDomain(CustomValidators.emailDomainList.aits)]],
+
+      phone: [CustomValidators.propertyType.string],
 
 
     });
@@ -82,12 +75,12 @@ export class ProducttypeComponent implements OnInit {
   logValidationErrors(group: FormGroup = this.productTypeForm) {
     Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.get(key);
-      this.formErrors[key] = '';
+      CustomValidators.formErrors[key] = '';
       if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)) {
         const messages = CustomValidators.validationMessages[key];
         for (const errorKey in abstractControl.errors) {
           if (errorKey) {
-            this.formErrors[key] += messages[errorKey] + ' ';
+            CustomValidators.formErrors[key] += messages[errorKey] + ' ';
           }
         }
       }

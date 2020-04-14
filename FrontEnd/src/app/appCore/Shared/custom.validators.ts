@@ -2,6 +2,17 @@ import { AbstractControl, Validators, FormGroup } from '@angular/forms';
 
 export class CustomValidators {
 
+    static formErrors = {
+        name: '',
+        description: '',
+        email: '',
+        confirmEmail: '',
+        emailGroup: '',
+        contactPrefence: '',
+        phone: '',
+        email1: '',
+    };
+
     static validationMessages = {
         name: {
             required: 'Name is required.',
@@ -17,7 +28,7 @@ export class CustomValidators {
             required: 'Email address is required.',
             minlength: 'Email must be greater then 2 characters.',
             maxlength: 'Email must be less then 200 characters.',
-            emailDomain: 'Email domain should be' + ' ' + '{{emailDomain}}',
+            emailDomain: 'Email domain should be as place holder',
         },
         confirmEmail: {
             required: 'Confirm Email address is required.',
@@ -32,17 +43,53 @@ export class CustomValidators {
             required: 'Email address is required.',
             minlength: 'Email must be greater then 2 characters.',
             maxlength: 'Email must be less then 200 characters.',
-            emailDomain: 'Email domain should be' + ' ' + '{{emailDomain}}',
+            emailDomain: 'Email domain should be as place holder',
         }
     };
 
-    static propartyLength = {
-        id: 0,
-        minlength: 3,
-        maxlength: 100,
-        name: 100,
-        shortDescription: 250,
-        description: 500,
+    static propertyLength = {
+        minLength: 3,
+        maxLength: 100,
+        FistName40Length: 40,
+        MiddleName30Length: 30,
+        LastName30Length: 30,
+        Name100Length: 100,
+        ShortName50Length: 50,
+        GeneralText50Length: 50,
+        GeneralText100Length: 100,
+        Code30Length: 30,
+        AutoGenCode30Length: 30,
+        AutoGenNo30Length: 30,
+        AreaCode10Length: 10,
+        ShortDescription100Length: 100,
+        Description500Length: 500,
+        Description250Length: 250,
+        Address500Length: 500,
+        Address250Length: 250,
+        WebUrl100Length: 100,
+        FileUrl250Length: 250,
+        MobileNo15Length: 15,
+        PhoneNo15Length: 15,
+        NidNo17Length: 17,
+        NidNo10Length: 10,
+        Email50Length: 50,
+        ApIKey100Length: 100,
+        SocialNetworkUserName30Length: 30,
+        HeightUnitCm3Length: 3,
+        WeightUnitKg3Length: 5,
+        PublicIp100Length: 100,
+        LocalIp100Length: 100,
+        MacAddress100Length: 100,
+        Browser100Length: 100,
+    };
+
+    static propertyType = {
+        number: 0,
+        string: '',
+        boolean: false,
+        date: new Date(),
+        time: new Date().getHours() + ':' + new Date().getMinutes(),
+
     };
 
     static emailDomainList = {
@@ -62,8 +109,8 @@ export class CustomValidators {
         return (control: AbstractControl): { [key: string]: any } | null => {
             const email: string = control.value;
             const domain = email.substring(email.lastIndexOf('@') + 1);
-            if (email === '' || email.length < this.propartyLength.minlength ||
-                email.length > this.propartyLength.maxlength || domain.toLocaleLowerCase() === domainName.toLocaleLowerCase()) {
+            if (email === '' || email.length < this.propertyLength.minLength ||
+                email.length > this.propertyLength.maxLength || domain.toLocaleLowerCase() === domainName.toLocaleLowerCase()) {
                 return null;
             } else {
                 return { emailDomain: true, };
