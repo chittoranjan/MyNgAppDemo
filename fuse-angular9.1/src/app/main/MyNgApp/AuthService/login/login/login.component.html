@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="" style="text-align: center; margin-top: 50px;">
+        <div class="" >
+            <div>
+                <h3>User Login <span *ngIf="authService.getUser()" >as <b>{{authService.getUser()| uppercase}}</b></span></h3>
+            </div>
+            <div class="">
+                <form class="" *ngIf="!authService.getUser()" [formGroup]="loginForm"
+                    (ngSubmit)="login(loginForm.value)">
+                    <div>
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>User Name</mat-label>
+                            <input autocomplete="off" matInput formControlName="username">
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Password</mat-label>
+                            <input autocomplete="off" matInput formControlName="password">
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-stroked-button color="warn" type="submit"> Log in</button>
+                </form>
+            </div>
+        </div>
+        <div style="color: brown;" role="alert" *ngIf="message">
+            <b >{{message}}</b>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,66 @@
+<mat-table class="products-table" #table [dataSource]="dataSource">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+            <p class="text-truncate">{{product.id}}</p>
+        </mat-cell>
+    </ng-container>
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+            <p class="text-truncate">{{product.name}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+            <p class="text-truncate">{{product.price}}</p>
+        </mat-cell>
+    </ng-container>
+
+     <!-- Name Column -->
+     <ng-container matColumnDef="productType">
+        <mat-header-cell *matHeaderCellDef>Product Type</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+            <p class="text-truncate">{{product.productType.name}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+            <p class="text-truncate">{{product.description}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Active Column -->
+    <ng-container matColumnDef="action" fxFxlex="100">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Active</mat-header-cell>
+        <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
+            <mat-icon *ngIf="product.description" class="active-icon green-600 s-16">check</mat-icon>
+            <mat-icon *ngIf="!product.description" class="active-icon red-500 s-16">close</mat-icon>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+    <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple>
+        <!-- [routerLink]="'/apps/e-commerce/products/'+productType.id+'/'+product.handle"> -->
+    </mat-row>
+
+</mat-table>
+
+<!-- <mat-paginator #paginator
+                   [length]="dataSource.filteredData.length"
+                   [pageIndex]="0"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator> -->

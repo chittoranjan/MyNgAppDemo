@@ -1,0 +1,22 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+
+// Import app.theme.scss
+@import "app/app.theme";
+
+
+
+@media screen and (min-width: 350px) and (max-width: 768px)  {
+
+    .media-width {
+        flex: 100;
+        padding-top: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 12 !important;
+    }
+
+    .media-pl {
+        padding-left: 0 !important;
+    }
+}

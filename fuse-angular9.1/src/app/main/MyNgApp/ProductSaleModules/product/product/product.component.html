@@ -1,0 +1,102 @@
+<div class="page-layout simple fullwidth">
+
+    <!-- CONTENT -->
+    <div class="content" >
+
+        <!-- CENTER -->
+        <div class="center pb-12" fxLayoutAlign="center center" >
+            <!-- Form CARD -->
+            <div class="cards p-12 media-width" fxFlex="100"> <!-- Mediea Query for 100% Width-->
+
+                <div class="fuse-card pb-12" fxFlex="100">
+                    <div class="p-16 pb-0">
+                        <div class="h1 font-weight-650">Product Entry</div>
+                    </div>
+
+                    <div class="card-divider"></div>
+
+                    <!-- REACTIVE FORM EXAMPLE -->
+                    <form fxLayout="column" class="px-8" [formGroup]="productForm"
+                        (ngSubmit)="save(productForm)">
+
+                        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Product Type</mat-label>
+                                <mat-select formControlName="productTypeId" (blur)="logValidationErrors()">
+                                    <mat-option *ngFor="let productType of productTypeList" [value]="productType.id">
+                                        {{ productType.name }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="formErrors.productTypeId">{{formErrors.productTypeId}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="name" (blur)="logValidationErrors()">
+                                <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100" class="pl-4 media-pl">
+                                <mat-label>Price</mat-label>
+                                <input matInput formControlName="price" (blur)="logValidationErrors()">
+                                <mat-error *ngIf="formErrors.price">{{formErrors.price}}</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="description" (blur)="logValidationErrors()"></textarea>
+                                <mat-error *ngIf="formErrors.description">{{formErrors.description}}</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="end center" class="pr-4">
+                            <button mat-stroked-button color="primary" type="submit"
+                                [disabled]="!productForm.valid"> Save</button>
+                        </div>
+
+                    </form>
+
+                    <!-- / REACTIVE FORM EXAMPLE -->
+                </div>
+            </div>
+            <!-- / Form CARD -->
+
+        </div>
+        <!-- / CENTER -->
+
+
+    </div>
+    <!-- CONTENT-->
+
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- CENTER -->
+        <div class="center pb-12" outAlign="center center">
+
+            <!-- Table CARD -->
+            <div class="cards p-12 media-width" fxFlex="100" >
+
+                <div class="fuse-card pb-12" fxFlex="100">
+                    <div class="p-16 pb-0">
+                        <div class="h1 font-weight-650">Product List</div>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <div class="px-8">
+                        <app-product-list></app-product-list>
+                    </div>
+
+                </div>
+            </div>
+            <!-- / Table CARD -->
+        </div>
+    </div>
+
+</div>
