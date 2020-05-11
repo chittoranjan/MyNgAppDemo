@@ -1,46 +1,59 @@
 <div class="page-layout simple fullwidth">
 
     <!-- CONTENT -->
-    <div class="content" >
+    <div class="content">
 
         <!-- CENTER -->
-        <div class="center pb-12" fxLayoutAlign="center center" >
+        <div class="center pb-12" fxLayoutAlign="center center">
             <!-- Form CARD -->
-            <div class="cards p-12 media-width"> <!-- Mediea Query for 100% Width-->
+            <div class="cards p-12 media-width">
+                <!-- Mediea Query for 100% Width-->
 
                 <div class="fuse-card pb-12" fxFlex="100">
-                    <div class="p-16 pb-0">
-                        <div class="h1 font-weight-650">Product Type Entry</div>
+                    <div class="p-16 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="space-between center">
+                        <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product Type Entry</div>
+
+                        <div class="pr-0" fxLayout="row" fxLayoutAlign="end center">
+                            <button mat-icon-button (click)="cardExpanded = !cardExpanded">
+                                <mat-icon *ngIf="cardExpanded" title="Close">remove_circle_outline</mat-icon>
+                                <mat-icon *ngIf="!cardExpanded" title="Add">add_circle_outline</mat-icon>
+                            </button>
+                        </div>
+                       
                     </div>
 
-                    <div class="card-divider"></div>
+                    <div class="" *ngIf="cardExpanded" [@expandCollapse]>
+                        <div class="card-divider"></div>
 
-                    <!-- REACTIVE FORM EXAMPLE -->
-                    <form fxLayout="column" class="px-8" [formGroup]="productTypeForm"
-                        (ngSubmit)="save(productTypeForm)">
+                        <!-- REACTIVE FORM EXAMPLE -->
+                        <form fxLayout="column" class="px-8" [formGroup]="productTypeForm"
+                            (ngSubmit)="save(productTypeForm)">
 
-                        <div fxLayout="column" fxLayout.sm="column" fxLayout.xs="column" fxFlex="1 0 auto">
-                            <mat-form-field appearance="outline" fxFlex="100">
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="name" (blur)="logValidationErrors()">
-                                <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
-                            </mat-form-field>
+                            <div fxLayout="column" fxLayout.sm="column" fxLayout.xs="column" fxFlex="1 0 auto">
+                                <mat-form-field appearance="outline" fxFlex="100">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput formControlName="name" (blur)="logValidationErrors()">
+                                    <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
+                                </mat-form-field>
 
-                            <mat-form-field appearance="outline" fxFlex="100">
-                                <mat-label>Description</mat-label>
-                                <textarea matInput formControlName="description" (blur)="logValidationErrors()"></textarea>
-                                <mat-error *ngIf="formErrors.description">{{formErrors.description}}</mat-error>
-                            </mat-form-field>
-                        </div>
+                                <mat-form-field appearance="outline" fxFlex="100">
+                                    <mat-label>Description</mat-label>
+                                    <textarea rows="3" matInput formControlName="description"
+                                        (blur)="logValidationErrors()"></textarea>
+                                    <mat-error *ngIf="formErrors.description">{{formErrors.description}}</mat-error>
+                                </mat-form-field>
+                            </div>
 
-                        <div class="" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="end center" class="pr-4">
-                            <button mat-stroked-button color="primary" type="submit"
-                                [disabled]="!productTypeForm.valid"> Save</button>
-                        </div>
+                            <div class="" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="end center"
+                                class="pr-4">
+                                <button mat-stroked-button color="primary" type="submit"
+                                    [disabled]="!productTypeForm.valid"> Save</button>
+                            </div>
 
-                    </form>
+                        </form>
 
-                    <!-- / REACTIVE FORM EXAMPLE -->
+                        <!-- / REACTIVE FORM EXAMPLE -->
+                    </div>
                 </div>
             </div>
             <!-- / Form CARD -->
@@ -60,7 +73,7 @@
         <div class="center pb-12" outAlign="center center">
 
             <!-- Table CARD -->
-            <div class="cards p-12" fxFlex="100" >
+            <div class="cards p-12  media-width" fxFlex="100">
 
                 <div class="fuse-card pb-12" fxFlex="100">
                     <div class="p-16 pb-0">

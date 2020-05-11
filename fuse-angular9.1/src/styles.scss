@@ -4,10 +4,43 @@
 // Import app.theme.scss
 @import "app/app.theme";
 
+// ======== Start This Section For text box hight alignment ============
+
+// ::ng-deep
+ .mat-form-field-flex > .mat-form-field-infix {
+    padding: 0.6em 0px !important;
+}
+
+// ::ng-deep
+ .mat-form-field-label-wrapper {
+    top: -1em !important;
+}
+
+// ::ng-deep
+    .mat-form-field-appearance-outline
+    .mat-form-field-can-float
+    .mat-form-field-should-float
+    .mat-form-field-label {
+    transform: translateY(-1.1em) scale(0.75) !important;
+    width: 133.33333% !important;
+}
+
+// ::ng-deep
+.mat-form-field-subscript-wrapper {
+    margin-top: 0.2em !important;
+    // padding-left: 0px !important;
+}
+
+// ::ng-deep
+ .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0px !important;
+}
+
+// ======== End This Section For text box hight alignment ============
 
 
-@media screen and (min-width: 350px) and (max-width: 768px)  {
-
+// ======== Start This Section For Media Queruy ============
+@media screen and (min-width: 350px) and (max-width: 768px) {
     .media-width {
         flex: 100;
         padding-top: 0 !important;
@@ -19,4 +52,10 @@
     .media-pl {
         padding-left: 0 !important;
     }
+
+    .media-pr {
+        padding-right: 0 !important;
+    }
 }
+
+// ======== End This Section For Media Queruy ============

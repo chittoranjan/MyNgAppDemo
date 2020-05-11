@@ -7,6 +7,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductService } from './product.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 const routes = [
   {
@@ -21,6 +24,7 @@ const routes = [
     FuseSharedModule,
     TranslateModule,
     SharedModule,
+    BrowserAnimationsModule,
     RouterModule.forChild(routes),
    
   ],

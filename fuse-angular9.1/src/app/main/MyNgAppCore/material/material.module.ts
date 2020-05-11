@@ -42,6 +42,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const MaterialComponents = [
   A11yModule,
@@ -87,7 +88,7 @@ const MaterialComponents = [
   ScrollingModule,
   MatGridListModule,
   MatFormFieldModule,
-
+  BrowserAnimationsModule,
 ];
 
 

@@ -5,13 +5,18 @@ import { ProductService } from '../product.service';
 import { Product } from '../product.modle';
 import { ProductSaleCommonService } from '../../product-sale-common.service';
 import { CustomValidators } from 'app/main/MyNgAppCore/Shared/custom.validators';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  animations: fuseAnimations
 })
 export class ProductComponent implements OnInit {
+
+  cardExpanded: boolean = false;
+  searchExpanded: boolean = false;
 
   productTypeList: ProductType[] = [];
 
@@ -57,8 +62,8 @@ export class ProductComponent implements OnInit {
 
       description: [CustomValidators.propertyType.string, [Validators.required,
       Validators.minLength(CustomValidators.propertyLength.minLength), Validators.maxLength(CustomValidators.propertyLength.maxLength)]],
-      
-      
+
+
 
     });
   }

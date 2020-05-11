@@ -4,17 +4,19 @@ import { ProducttypeService } from '../producttype.service';
 import { FormBuilder } from '@angular/forms';
 import { ProductType } from '../product-type.model';
 import { CustomValidators } from 'app/main/MyNgAppCore/Shared/custom.validators';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
   selector: 'app-producttype',
   templateUrl: './producttype.component.html',
-  styleUrls: ['./producttype.component.scss']
+  styleUrls: ['./producttype.component.scss'],
+  animations   : fuseAnimations
 })
 export class ProducttypeComponent implements OnInit {
 
+  cardExpanded: boolean = false;
+
   productTypeForm: FormGroup;
-
-
   formErrors = CustomValidators.formErrors;
 
   constructor(
