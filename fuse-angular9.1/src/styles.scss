@@ -6,38 +6,52 @@
 
 // ======== Start This Section For text box hight alignment ============
 
-// ::ng-deep
- .mat-form-field-flex > .mat-form-field-infix {
-    padding: 0.6em 0px !important;
+// Error outsid box Start
+
+.mat-form-field-flex > .mat-form-field-infix {
+    padding: 0.45em 0px !important;
 }
 
-// ::ng-deep
- .mat-form-field-label-wrapper {
-    top: -1em !important;
+.mat-form-field-label-wrapper {
+    top: -1.2em !important;
 }
 
-// ::ng-deep
-    .mat-form-field-appearance-outline
-    .mat-form-field-can-float
-    .mat-form-field-should-float
-    .mat-form-field-label {
+.mat-form-field-appearance-outline .mat-form-field-can-float .mat-form-field-should-float .mat-form-field-label {
     transform: translateY(-1.1em) scale(0.75) !important;
     width: 133.33333% !important;
 }
 
-// ::ng-deep
 .mat-form-field-subscript-wrapper {
-    margin-top: 0.2em !important;
-    // padding-left: 0px !important;
+    margin-top: 0.1em !important;
 }
 
-// ::ng-deep
- .mat-form-field-appearance-outline .mat-form-field-wrapper {
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
     margin: 0px !important;
 }
 
+// Error outsid box End
+
+// Error in box Start
+// .mat-form-field-flex > .mat-form-field-infix {
+//     padding: 0.4em 0px !important;
+// }
+// .mat-form-field-label-wrapper {
+//     top: -1.5em;
+// }
+// .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+//     transform: translateY(-1.1em) scale(0.75);
+// }
+// .mat-form-field-wrapper {
+//     padding-bottom: 0;
+// }
+// mat-error {
+//     margin-top: -0.1em !important;
+// }
+// Error in box End
+
 // ======== End This Section For text box hight alignment ============
 
+// ======== End This Section For text box hight alignment ============
 
 // ======== Start This Section For Media Queruy ============
 @media screen and (min-width: 350px) and (max-width: 768px) {

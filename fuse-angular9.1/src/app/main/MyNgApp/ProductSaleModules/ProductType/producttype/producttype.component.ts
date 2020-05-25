@@ -15,6 +15,7 @@ import { fuseAnimations } from '@fuse/animations';
 export class ProducttypeComponent implements OnInit {
 
   cardExpanded: boolean = false;
+  searchExpanded: boolean = false;
 
   productTypeForm: FormGroup;
   formErrors = CustomValidators.formErrors;

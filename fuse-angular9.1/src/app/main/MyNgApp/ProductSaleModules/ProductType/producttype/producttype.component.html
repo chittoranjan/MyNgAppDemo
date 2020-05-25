@@ -3,27 +3,33 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <!-- CENTER -->
-        <div class="center pb-12" fxLayoutAlign="center center">
-            <!-- Form CARD -->
-            <div class="cards p-12 media-width">
-                <!-- Mediea Query for 100% Width-->
+        <!-- Form CARD -->
+        <div class="" *ngIf="cardExpanded" [@expandCollapse]>
+            <!-- CENTER -->
+            <div class="center" fxLayoutAlign="center center">
 
-                <div class="fuse-card pb-12" fxFlex="100">
-                    <div class="p-16 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="space-between center">
-                        <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product Type Entry</div>
+                <div class="cards p-12 media-width">
+                    <!-- Mediea Query for 100% Width-->
 
-                        <div class="pr-0" fxLayout="row" fxLayoutAlign="end center">
-                            <button mat-icon-button (click)="cardExpanded = !cardExpanded">
-                                <mat-icon *ngIf="cardExpanded" title="Close">remove_circle_outline</mat-icon>
-                                <mat-icon *ngIf="!cardExpanded" title="Add">add_circle_outline</mat-icon>
-                            </button>
+                    <div class="fuse-card pb-12" fxFlex="100">
+
+                        <div class="px-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                            fxLayoutAlign="space-between center">
+                            <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product Type
+                                Entry
+                            </div>
+
+                            <div class="pr-0" fxLayout="row" fxLayoutAlign="end center">
+                                <button mat-icon-button (click)="cardExpanded = !cardExpanded">
+                                    <mat-icon *ngIf="cardExpanded" title="Close">remove_circle_outline</mat-icon>
+                                    <mat-icon *ngIf="!cardExpanded" title="Add">add_circle_outline</mat-icon>
+                                </button>
+                            </div>
+
                         </div>
-                       
-                    </div>
 
-                    <div class="" *ngIf="cardExpanded" [@expandCollapse]>
-                        <div class="card-divider"></div>
+
+                        <div class="card-divider m-0 mt-4 mb-16"></div>
 
                         <!-- REACTIVE FORM EXAMPLE -->
                         <form fxLayout="column" class="px-8" [formGroup]="productTypeForm"
@@ -44,6 +50,7 @@
                                 </mat-form-field>
                             </div>
 
+                            <div class="card-divider m-0 mt-4 mb-16"></div>
                             <div class="" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="end center"
                                 class="pr-4">
                                 <button mat-stroked-button color="primary" type="submit"
@@ -55,40 +62,72 @@
                         <!-- / REACTIVE FORM EXAMPLE -->
                     </div>
                 </div>
+
+
+
             </div>
-            <!-- / Form CARD -->
-
+            <!-- / CENTER -->
         </div>
-        <!-- / CENTER -->
+        <!-- / Form CARD -->
 
 
-    </div>
-    <!-- CONTENT-->
-
-
-    <!-- CONTENT -->
-    <div class="content">
-
+        <!-- Table CARD -->
         <!-- CENTER -->
-        <div class="center pb-12" outAlign="center center">
+        <div class="center" outAlign="center center">
 
-            <!-- Table CARD -->
+
             <div class="cards p-12  media-width" fxFlex="100">
 
                 <div class="fuse-card pb-12" fxFlex="100">
-                    <div class="p-16 pb-0">
-                        <div class="h1 font-weight-650">Product Type List</div>
+                    <div class="px-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                        fxLayoutAlign="space-between center">
+                        <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product List</div>
+
+                        <div class="pr-0" fxLayout="row" fxLayoutAlign="end center">
+
+                            <button mat-icon-button (click)="searchExpanded = !searchExpanded">
+                                <mat-icon *ngIf="searchExpanded" title="Search">search</mat-icon>
+                                <mat-icon *ngIf="!searchExpanded" title="Close">search</mat-icon>
+                            </button>
+
+                            <button mat-icon-button (click)="cardExpanded = !cardExpanded">
+                                <mat-icon *ngIf="cardExpanded" title="Close">remove_circle_outline</mat-icon>
+                                <mat-icon *ngIf="!cardExpanded" title="Add">add_circle_outline</mat-icon>
+                            </button>
+
+                        </div>
                     </div>
 
-                    <div class="card-divider"></div>
+                    <div class="" *ngIf="searchExpanded" [@expandCollapse]>
+                        <div class="p-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                            fxLayoutAlign="space-between center">
+
+                            <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                                <div class="search" fxLayout="row" fxLayoutAlign="start center">
+                                    <mat-icon>search</mat-icon>
+                                    <input placeholder="Search" fxFlex>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card-divider m-0 mt-4 mb-16"></div>
                     <div class="px-8">
                         <app-producttype-list></app-producttype-list>
                     </div>
 
                 </div>
             </div>
-            <!-- / Table CARD -->
+
         </div>
+        <!-- CENTER -->
+        <!-- / Table CARD -->
+
     </div>
+    <!-- CONTENT-->
+
 
 </div>

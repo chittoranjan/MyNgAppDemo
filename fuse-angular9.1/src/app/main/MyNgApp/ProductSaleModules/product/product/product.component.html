@@ -2,17 +2,20 @@
 
     <!-- CONTENT -->
     <div class="content">
+
+        <!-- Form CARD -->
+
         <div class="" *ngIf="cardExpanded" [@expandCollapse]>
             <!-- CENTER -->
-            <div class="center pb-12" fxLayoutAlign="center center">
-                <!-- Form CARD -->
+            <div class="center" fxLayoutAlign="center center">
+
                 <div class="cards p-12 media-width" fxFlex="100">
                     <!-- Mediea Query for 100% Width-->
 
                     <div class="fuse-card pb-12" fxFlex="100">
 
-                        <div class="p-16 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
-                            fxLayoutAlign="space-between center">
+                        <div class="px-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                            fxLayoutAlign="space-between center" >
                             <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product Entry
                             </div>
 
@@ -24,7 +27,7 @@
                             </div>
                         </div>
 
-                        <div class="card-divider"></div>
+                        <div class="card-divider m-0 mt-4 mb-16"></div>
 
                         <!-- REACTIVE FORM EXAMPLE -->
                         <form fxLayout="column" class="px-8" [formGroup]="productForm" (ngSubmit)="save(productForm)">
@@ -67,11 +70,11 @@
                                 </mat-form-field>
                             </div>
 
-                            <div class="card-divider"></div>
+                            <div class="card-divider m-0 mb-16"></div>
                             <div class="" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="end center"
                                 class="pr-4">
 
-                                <button mat-stroked-button color="primary" type="" [disabled]="productForm.valid">
+                                <button mat-stroked-button color="primary" type="submit" [disabled]="productForm.valid">
                                     Save</button>
                             </div>
 
@@ -80,28 +83,22 @@
                         <!-- / REACTIVE FORM EXAMPLE -->
                     </div>
                 </div>
-                <!-- / Form CARD -->
+
 
             </div>
             <!-- / CENTER -->
-
         </div>
-    </div>
-    <!-- CONTENT-->
+        <!-- / Form CARD -->
 
-
-    <!-- CONTENT -->
-    <div class="content">
-
+        <!-- Table CARD -->
         <!-- CENTER -->
-        <div class="center pb-12" outAlign="center center">
+        <div class="center" outAlign="center center">
 
-            <!-- Table CARD -->
             <div class="cards p-12 media-width" fxFlex="100">
 
                 <div class="fuse-card pb-12" fxFlex="100">
 
-                    <div class="p-16 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                    <div class="px-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
                         fxLayoutAlign="space-between center">
                         <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product List</div>
 
@@ -121,7 +118,7 @@
                     </div>
 
                     <div class="" *ngIf="searchExpanded" [@expandCollapse]>
-                        <div class="p-16 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                        <div class="p-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
                             fxLayoutAlign="space-between center">
 
                             <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
@@ -136,15 +133,20 @@
                         </div>
                     </div>
 
-                    <div class="card-divider"></div>
+                    <div class="card-divider m-0 mt-4 mb-16"></div>
                     <div class="px-8">
                         <app-product-list></app-product-list>
                     </div>
 
                 </div>
             </div>
-            <!-- / Table CARD -->
+
         </div>
+
+        <!-- / CENTER -->
+        <!-- / Table CARD -->
+
     </div>
+    <!-- CONTENT-->
 
 </div>
