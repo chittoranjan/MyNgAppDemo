@@ -13,7 +13,7 @@
 
                     <div class="fuse-card pb-12" fxFlex="100">
 
-                        <div class="px-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                        <div class="px-8 pb-0 purple-500" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
                             fxLayoutAlign="space-between center">
                             <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product Type
                                 Entry
@@ -29,7 +29,7 @@
                         </div>
 
 
-                        <div class="card-divider m-0 mt-4 mb-16"></div>
+                        <div class="card-divider m-0 mt-0 mb-16"></div>
 
                         <!-- REACTIVE FORM EXAMPLE -->
                         <form fxLayout="column" class="px-8" [formGroup]="productTypeForm"
@@ -79,15 +79,21 @@
             <div class="cards p-12  media-width" fxFlex="100">
 
                 <div class="fuse-card pb-12" fxFlex="100">
-                    <div class="px-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+
+                    <div class="px-8 pb-0 purple-500" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
                         fxLayoutAlign="space-between center">
                         <div class="h1 font-weight-650" fxLayout="row" fxLayoutAlign="start center">Product List</div>
 
                         <div class="pr-0" fxLayout="row" fxLayoutAlign="end center">
 
+                            <button mat-icon-button>
+                                <mat-icon title="Download">arrow_drop_down_circle</mat-icon>
+                               
+                            </button>
+
                             <button mat-icon-button (click)="searchExpanded = !searchExpanded">
-                                <mat-icon *ngIf="searchExpanded" title="Search">search</mat-icon>
-                                <mat-icon *ngIf="!searchExpanded" title="Close">search</mat-icon>
+                                <mat-icon *ngIf="searchExpanded" title="Close">search</mat-icon>
+                                <mat-icon *ngIf="!searchExpanded" title="Search">search</mat-icon>
                             </button>
 
                             <button mat-icon-button (click)="cardExpanded = !cardExpanded">
@@ -98,8 +104,8 @@
                         </div>
                     </div>
 
-                    <div class="" *ngIf="searchExpanded" [@expandCollapse]>
-                        <div class="p-8 pb-0" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
+                    <div class="purple-400" *ngIf="searchExpanded" [@expandCollapse]>
+                        <div class="p-8" fxLayout="row" fxLayout.sm="row" fxLayout.xs="row"
                             fxLayoutAlign="space-between center">
 
                             <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
@@ -114,7 +120,7 @@
                         </div>
                     </div>
 
-                    <div class="card-divider m-0 mt-4 mb-16"></div>
+                    <div class="card-divider m-0 mt-0 mb-16"></div>
                     <div class="px-8">
                         <app-producttype-list></app-producttype-list>
                     </div>

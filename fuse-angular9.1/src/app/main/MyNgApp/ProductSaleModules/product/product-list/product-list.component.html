@@ -1,4 +1,4 @@
-<mat-table class="products-table" #table [dataSource]="dataSource">
+<mat-table class="products-table" #table [dataSource]="dataSource" matSort>
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
@@ -11,7 +11,7 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
         <mat-cell *matCellDef="let product">
             <p class="text-truncate">{{product.name}}</p>
         </mat-cell>
@@ -19,15 +19,15 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
         <mat-cell *matCellDef="let product">
             <p class="text-truncate">{{product.price}}</p>
         </mat-cell>
     </ng-container>
 
-     <!-- Name Column -->
-     <ng-container matColumnDef="productType">
-        <mat-header-cell *matHeaderCellDef>Product Type</mat-header-cell>
+    <!-- Name Column -->
+    <ng-container matColumnDef="productType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Product Type</mat-header-cell>
         <mat-cell *matCellDef="let product">
             <p class="text-truncate">{{product.productType.name}}</p>
         </mat-cell>
@@ -35,7 +35,7 @@
 
     <!-- Description Column -->
     <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
         <mat-cell *matCellDef="let product">
             <p class="text-truncate">{{product.description}}</p>
         </mat-cell>
@@ -58,9 +58,6 @@
 
 </mat-table>
 
-<!-- <mat-paginator #paginator
-                   [length]="dataSource.filteredData.length"
-                   [pageIndex]="0"
-                   [pageSize]="10"
-                   [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator> -->
+<mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

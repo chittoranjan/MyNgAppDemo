@@ -1,55 +1,49 @@
+<mat-table class="products-table" #table [dataSource]="dataSource" matSort>
 
-  
-
-            <mat-table class="products-table" #table [dataSource]="dataSource">
-
-                <!-- ID Column -->
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-                    <mat-cell *matCellDef="let productType">
-                        <p class="text-truncate">{{productType.id}}</p>
-                    </mat-cell>
-                </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let productType">
+            <p class="text-truncate">{{productType.id}}</p>
+        </mat-cell>
+    </ng-container>
 
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-                    <mat-cell *matCellDef="let productType">
-                        <p class="text-truncate" >{{productType.name}}</p>
-                    </mat-cell>
-                </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let productType">
+            <p class="text-truncate">{{productType.name}}</p>
+        </mat-cell>
+    </ng-container>
 
 
 
-                <!-- Description Column -->
-                <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-                    <mat-cell *matCellDef="let productType">
-                        <p class="text-truncate">{{productType.description}}</p>
-                    </mat-cell>
-                </ng-container>
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+        <mat-cell *matCellDef="let productType">
+            <p class="text-truncate">{{productType.description}}</p>
+        </mat-cell>
+    </ng-container>
 
-                <!-- Active Column -->
-                <ng-container matColumnDef="action" fxFxlex="100">
-                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Active</mat-header-cell>
-                    <mat-cell *matCellDef="let productType" fxHide fxShow.gt-xs>
-                        <mat-icon *ngIf="productType.description" class="active-icon green-600 s-16">check</mat-icon>
-                        <mat-icon *ngIf="!productType.description" class="active-icon red-500 s-16">close</mat-icon>
-                    </mat-cell>
-                </ng-container>
+    <!-- Active Column -->
+    <ng-container matColumnDef="action" fxFxlex="100">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Active</mat-header-cell>
+        <mat-cell *matCellDef="let productType" fxHide fxShow.gt-xs>
+            <mat-icon *ngIf="productType.description" class="active-icon green-600 s-16">check</mat-icon>
+            <mat-icon *ngIf="!productType.description" class="active-icon red-500 s-16">close</mat-icon>
+        </mat-cell>
+    </ng-container>
 
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
-                <mat-row *matRowDef="let productType; columns: displayedColumns;" class="product" matRipple>
-                    <!-- [routerLink]="'/apps/e-commerce/products/'+productType.id+'/'+product.handle"> -->
-                </mat-row>
+    <mat-row *matRowDef="let productType; columns: displayedColumns;" class="product" matRipple>
+        <!-- [routerLink]="'/apps/e-commerce/products/'+productType.id+'/'+product.handle"> -->
+    </mat-row>
 
-            </mat-table>
+</mat-table>
 
-            <!-- <mat-paginator #paginator
-                   [length]="dataSource.filteredData.length"
-                   [pageIndex]="0"
-                   [pageSize]="10"
-                   [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator> -->
+<mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
