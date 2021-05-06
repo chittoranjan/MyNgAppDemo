@@ -5,12 +5,15 @@ import { FormBuilder } from '@angular/forms';
 import { ProductType } from '../product-type.model';
 import { CustomValidators } from 'app/main/MyNgAppCore/Shared/custom.validators';
 import { fuseAnimations } from '@fuse/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+import { reduce } from 'lodash';
 
 @Component({
   selector: 'app-producttype',
   templateUrl: './producttype.component.html',
   styleUrls: ['./producttype.component.scss'],
-  animations   : fuseAnimations
+  animations: fuseAnimations
 })
 export class ProducttypeComponent implements OnInit {
 
@@ -25,6 +28,7 @@ export class ProducttypeComponent implements OnInit {
     private _formBuilder: FormBuilder,
     // tslint:disable-next-line: variable-name
     private _service: ProducttypeService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -94,19 +98,31 @@ export class ProducttypeComponent implements OnInit {
 
     });
   }
-
-
+ 
   save(form) {
 
-    if (form.valid) {
-      const model = form.value as ProductType;
-      this._service.save(model).subscribe(res => {
-        this.productTypeFormInstance();
-        this._service.get();
-      });
-    } else {
-      this.logValidationErrors(this.productTypeForm); // how to make all are touched?
-    }
+    const dialogRef = this.dialog.open(FuseConfirmDialogComponent, {
+      // width: '350px',
+      // data: 'Do you confirm the deletion of this data?',
+     
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        // DO SOMETHING
+        if (form.valid) {
+          const model = form.value as ProductType;
+          this._service.save(model).subscribe(res => {
+            this.productTypeFormInstance();
+            this._service.get();
+          });
+        } else {
+          this.logValidationErrors(this.productTypeForm); // how to make all are touched?
+        }
+      }
+    });
+
+    
 
   }
 }

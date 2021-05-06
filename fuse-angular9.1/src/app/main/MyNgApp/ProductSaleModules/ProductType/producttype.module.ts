@@ -7,6 +7,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { ProducttypeListComponent } from './producttype-list/producttype-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { ProducttypeService } from './producttype.service';
+import { FuseConfirmDialogModule } from '@fuse/components/confirm-dialog/confirm-dialog.module';
 
 
 const routes = [
@@ -23,7 +24,7 @@ const routes = [
     TranslateModule,
     RouterModule.forChild(routes),
     SharedModule,
-   
+    FuseConfirmDialogModule
   ],
   providers: [
     ProducttypeService,
